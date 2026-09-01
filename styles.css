@@ -123,34 +123,6 @@ h2 {
   transform: translateY(1px);
 }
 
-.task-filters {
-  display: flex;
-  gap: 0.5rem;
-  margin-top: 1.5rem;
-}
-
-.filter-button {
-  padding: 0.5rem 0.8rem;
-  border: 1px solid #d0d5dd;
-  border-radius: 0.6rem;
-  color: #475467;
-  background: #fff;
-  font-size: 0.9rem;
-  font-weight: 700;
-  transition: border-color 160ms ease, color 160ms ease, background 160ms ease;
-}
-
-.filter-button:hover {
-  border-color: #5d5fef;
-  color: #494bd5;
-}
-
-.filter-button.active {
-  border-color: #5d5fef;
-  color: #fff;
-  background: #5d5fef;
-}
-
 .empty-state {
   margin: 2rem 0 0;
   padding: 1.4rem;
@@ -216,7 +188,6 @@ h2 {
 }
 
 .task-form button:focus-visible,
-.filter-button:focus-visible,
 .delete-button:focus-visible,
 .task-toggle:focus-visible {
   outline: 3px solid rgba(93, 95, 239, 0.35);
@@ -256,10 +227,6 @@ h2 {
 
   .task-form button {
     width: 100%;
-  }
-
-  .task-filters {
-    flex-wrap: wrap;
   }
 
   .task-item {
