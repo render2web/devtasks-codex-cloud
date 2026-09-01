@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevTasks</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="task-app">
+      <header class="app-header">
+        <p class="eyebrow">Organiza tu día</p>
+        <h1>DevTasks</h1>
+        <p class="subtitle">Tus tareas, claras y en un solo lugar.</p>
+      </header>
+
+      <section class="task-panel" aria-labelledby="task-heading">
+        <h2 id="task-heading">Mis tareas</h2>
+
+        <form id="task-form" class="task-form">
+          <label class="sr-only" for="task-input">Nueva tarea</label>
+          <input
+            id="task-input"
+            name="task"
+            type="text"
+            placeholder="¿Qué necesitas hacer?"
+            autocomplete="off"
+            required
+          >
+          <button type="submit">Agregar tarea</button>
+        </form>
+
+        <p id="empty-state" class="empty-state" role="status">Todavía no hay tareas. Agrega la primera.</p>
+        <ul id="task-list" class="task-list" aria-live="polite"></ul>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
