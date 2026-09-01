@@ -4,8 +4,10 @@ const taskForm = document.querySelector("#task-form");
 const taskInput = document.querySelector("#task-input");
 const taskList = document.querySelector("#task-list");
 const emptyState = document.querySelector("#empty-state");
+const filterButtons = document.querySelectorAll(".filter-button");
 
 let tasks = loadTasks();
+let activeFilter = "all";
 
 function loadTasks() {
   const storedTasks = localStorage.getItem(STORAGE_KEY);
@@ -27,10 +29,25 @@ function saveTasks() {
 }
 
 function renderTasks() {
-  taskList.replaceChildren();
-  emptyState.hidden = tasks.length > 0;
+  const filteredTasks = tasks.filter((task) => {
+    if (activeFilter === "pending") {
+      return !task.completed;
+    }
 
-  tasks.forEach((task) => {
+    if (activeFilter === "completed") {
+      return task.completed;
+    }
+
+    return true;
+  });
+
+  taskList.replaceChildren();
+  emptyState.hidden = filteredTasks.length > 0;
+  emptyState.textContent = tasks.length === 0
+    ? "Todavía no hay tareas. Agrega la primera."
+    : `No hay tareas ${activeFilter === "pending" ? "pendientes" : "completadas"}.`;
+
+  filteredTasks.forEach((task) => {
     const item = document.createElement("li");
     const toggle = document.createElement("input");
     const text = document.createElement("span");
@@ -100,6 +117,20 @@ taskForm.addEventListener("submit", (event) => {
 
 taskInput.addEventListener("input", () => {
   taskInput.setCustomValidity("");
+});
+
+filterButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    activeFilter = button.dataset.filter;
+
+    filterButtons.forEach((filterButton) => {
+      const isActive = filterButton === button;
+      filterButton.classList.toggle("active", isActive);
+      filterButton.setAttribute("aria-pressed", isActive.toString());
+    });
+
+    renderTasks();
+  });
 });
 
 renderTasks();

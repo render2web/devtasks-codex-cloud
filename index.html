@@ -30,6 +30,12 @@
           <button type="submit">Agregar tarea</button>
         </form>
 
+        <div class="task-filters" aria-label="Filtrar tareas">
+          <button class="filter-button active" type="button" data-filter="all" aria-pressed="true">Todas</button>
+          <button class="filter-button" type="button" data-filter="pending" aria-pressed="false">Pendientes</button>
+          <button class="filter-button" type="button" data-filter="completed" aria-pressed="false">Completadas</button>
+        </div>
+
         <p id="empty-state" class="empty-state" role="status">Todavía no hay tareas. Agrega la primera.</p>
         <ul id="task-list" class="task-list" aria-live="polite"></ul>
       </section>
